@@ -11,10 +11,13 @@ pub fn build(b: *std.build.Builder) void {
         .optimize = optimize,
     });
 
-    lib.addCSourceFiles(&.{
-        "protobuf-c/protobuf-c.c",
-        }, &[_][]const u8{
-        "-fno-sanitize=undefined",
+    lib.addCSourceFiles(.{
+        .files = &.{
+            "protobuf-c/protobuf-c.c",
+        },
+        .flags = &[_][]const u8{
+            "-fno-sanitize=undefined",
+        }
     });
     lib.linkLibC();
     lib.installHeader("protobuf-c/protobuf-c.h", "protobuf-c/protobuf-c.h");
