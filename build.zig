@@ -20,6 +20,6 @@ pub fn build(b: *std.Build) void {
         }
     });
     lib.linkLibC();
-    lib.installHeader("protobuf-c/protobuf-c.h", "protobuf-c/protobuf-c.h");
+    lib.installHeader(b.path("protobuf-c/protobuf-c.h"), "protobuf-c/protobuf-c.h");
     b.installArtifact(lib);
 }
